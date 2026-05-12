@@ -181,12 +181,12 @@ if __name__ == "__main__":
         default_width = 512
         default_height = 512
     else:
-        pretrained_teacher_model = "stabilityai/stable-diffusion-2-1"
+        pretrained_teacher_model = "sd2-community/stable-diffusion-2-1"
         default_width = 768
         default_height = 768
 
     vae = AutoencoderKL.from_pretrained(
-        "stabilityai/stable-diffusion-2-1",
+        "sd2-community/stable-diffusion-2-1",
         subfolder="vae",
         torch_dtype=torch.float16,
     )
@@ -194,9 +194,9 @@ if __name__ == "__main__":
         pretrained_teacher_model, subfolder="scheduler"
     )
     unet = UNet2DConditionModel.from_pretrained(args.model_name)
-    safety_checker = StableDiffusionSafetyChecker.from_pretrained(
-        "CompVis/stable-diffusion-safety-checker"
-    )
+    # safety_checker = StableDiffusionSafetyChecker.from_pretrained(
+    #     "CompVis/stable-diffusion-safety-checker"
+    # )
     pipe = StableDiffusionPipeline.from_pretrained(
         pretrained_teacher_model,
         vae=vae,
@@ -204,7 +204,7 @@ if __name__ == "__main__":
         scheduler=scheduler,
         torch_device=device,
         torch_dtype=DTYPE,
-        safety_checker=safety_checker,
+        # safety_checker=safety_checker,
     )
 
     with gr.Blocks(css="style.css") as demo:
@@ -321,4 +321,4 @@ if __name__ == "__main__":
 
     demo.queue(api_open=False)
     # demo.queue(max_size=20).launch()
-    demo.launch()
+    demo.launch(share=True)

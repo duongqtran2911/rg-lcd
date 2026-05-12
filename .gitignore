@@ -1,0 +1,16 @@
+HPSv2/
+.cache/
+hf_cache/
+logs/
+__pycache__/
+*.log
+output.png
+HPSv2/
+wandb/
+outputs/
+checkpoints/
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.bin

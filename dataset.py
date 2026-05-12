@@ -8,7 +8,9 @@ from torchvision import transforms
 import torchvision.transforms.functional as TF
 from diffusers.training_utils import resolve_interpolation_mode
 
-from common_utils import tarfile_to_samples_nothrow, filter_keys, default_collate
+# from common_utils import tarfile_to_samples_nothrow, filter_keys, default_collate
+from common_utils import tarfile_to_samples_nothrow, filter_keys
+from torch.utils.data._utils.collate import default_collate
 
 
 class SDText2ImageDataset:
