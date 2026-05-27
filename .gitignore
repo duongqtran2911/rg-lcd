@@ -1,7 +1,7 @@
 HPSv2/
 .cache/
 hf_cache/
-logs/
+logs*/
 __pycache__/
 *.log
 output.png
